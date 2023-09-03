@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<enemy code = 'orc'>
+    <name>Orc</name>
+    <speed>2.0</speed>
+    <maxHealth>10.0</maxHealth>
+    <attack>1.5</attack>
+    <difficulty>3</difficulty>
+    <atkItv>1.0</atkItv>
+    <isMelee>true</isMelee>
+</enemy>
