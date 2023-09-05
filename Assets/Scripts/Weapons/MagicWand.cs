@@ -27,13 +27,13 @@ namespace Weapons
         public override void Attack()
         {
             GameObject p = Controller.ShootProjectile(Projectile, Player.transform.position);
-            ProjectileEntity _projEntity = p.GetComponent<ProjectileEntity>();
-            _projEntity.Attack = AttackMultiplier * Entity.Attack;
-            _projEntity.Speed = ProjSpeed;
-            _projEntity.Range = ProjRange;
+            ProjectileEntity projEntity = p.GetComponent<ProjectileEntity>();
+            projEntity.Attack = AttackMultiplier * Entity.Attack;
+            projEntity.Speed = ProjSpeed;
+            projEntity.Range = ProjRange;
             
-            ProjectileController _projController = p.GetComponent<ProjectileController>();
-            _projController.Shoot(Player, Controller.Direction);
+            ProjectileController projController = p.GetComponent<ProjectileController>();
+            projController.Shoot(Player, Controller.Direction);
             ProjCount++;
             base.Attack();
         }
