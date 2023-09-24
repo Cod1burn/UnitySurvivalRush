@@ -16,7 +16,6 @@ public class UIEXPBar : MonoBehaviour, IPointerEnterHandler ,IPointerExitHandler
     public Image mask;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI expText;
-    public Button addWeaponButton;
 
     private float _maxExp;
     private float _exp;
@@ -106,12 +105,4 @@ public class UIEXPBar : MonoBehaviour, IPointerEnterHandler ,IPointerExitHandler
         HideExpText();
     }
 
-    /// <summary>
-    /// Open the level up menu to select a new weapon or upgrade an existing weapon.
-    /// Call by button on-click event in inspector.
-    /// </summary>
-    public void OpenLevelUpMenu()
-    {
-        
-    }
 }
