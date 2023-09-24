@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<weapon name="Magic Wand" icon="magicwand">
+    <level lvl="1">
+        <description>Damage increased by 20%.</description>
+        <attack>1.0</attack>
+        <interval>1.0</interval>
+        <projNum>1</projNum>
+        <projSpeed>10.0</projSpeed>
+    </level>
+    <level lvl="2">
+        <description>Shoot interval decreased 0.3 second.</description>
+        <attack>1.2</attack>
+        <interval>1.0</interval>
+        <projNum>1</projNum>
+        <projSpeed>10.0</projSpeed>
+    </level>
+    <level lvl="3">
+        <description>Shoot one more orb.</description>
+        <attack>1.2</attack>
+        <interval>0.7</interval>
+        <projNum>1</projNum>
+        <projSpeed>10.0</projSpeed>
+    </level>
+    <level lvl="3">
+        <description>Speed and range increased by 50%.</description>
+        <attack>1.2</attack>
+        <interval>0.8</interval>
+        <projNum>2</projNum>
+        <projSpeed>10.0</projSpeed>
+    </level>
+    <level lvl="3">
+        <description>Damage increased by 30%.</description>
+        <attack>1.2</attack>
+        <interval>0.8</interval>
+        <projNum>2</projNum>
+        <projSpeed>15.0</projSpeed>
+    </level>
+    <level lvl="4">
+        <description>Shoot interval decreased 0.2 second.</description>
+        <attack>1.5</attack>
+        <interval>0.8</interval>
+        <projNum>2</projNum>
+        <projSpeed>15.0</projSpeed>
+    </level>
+    <level lvl="5">
+        <description>Shoot one more orb.</description>
+        <attack>1.5</attack>
+        <interval>0.5</interval>
+        <projNum>2</projNum>
+        <projSpeed>15.0</projSpeed>
+    </level>
+    <level lvl="6">
+        <description>Max Level.</description>
+        <attack>1.5</attack>
+        <interval>0.5</interval>
+        <projNum>3</projNum>
+        <projSpeed>15.0</projSpeed>
+    </level>
+    
+</weapon>
