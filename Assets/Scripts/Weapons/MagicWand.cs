@@ -1,3 +1,4 @@
+using System.Xml;
 using Controllers;
 using Entities;
 using Unity.VisualScripting.FullSerializer;
@@ -5,18 +6,15 @@ using UnityEngine;
 
 namespace Weapons
 {
-    public class MagicWand : Weapon
+    public sealed class MagicWand : Weapon
     {
 
         public MagicWand(GameObject player) : base(player, WeaponType.MagicWand, Resources.Load("Projectile/BlueOrb") as GameObject)
         {
-            AttackMultiplier = 1.0f;
-            AttackInterval = 1.0f;
+            Description = "Shoot magic orbs in your facing direction.";
+            
 
-            ProjNum = 1;
-
-            ProjSpeed = 10.0f;
-            ProjRange = 20.0f;
+            GetLevelBonus();
         }
 
         public override void Update()
@@ -40,14 +38,22 @@ namespace Weapons
 
         public override void GetLevelBonus()
         {
-            switch (Level)
+            TextAsset xmlData = Resources.Load<TextAsset>("Data/Weapons/MagicWand");
+
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xmlData.text);
+
+            XmlNode levelNode = xmlDoc.SelectSingleNode($"weapon/level[@number='{Level}']");
+
+            if (levelNode != null)
             {
-                case 2:
-                    ProjNum++;
-                    break;
-                case 3:
-                    AttackMultiplier = 1.2f;
-                    break;
+                Tooltip = levelNode.SelectSingleNode("description")?.InnerText;
+                AttackMultiplier = float.Parse(levelNode.SelectSingleNode("attack")?.InnerText);
+                AttackInterval = float.Parse(levelNode.SelectSingleNode("interval")?.InnerText);
+                MinimumInterval = 0.1f * AttackInterval;
+                ProjNum = int.Parse(levelNode.SelectSingleNode("projNum")?.InnerText);
+                ProjSpeed = float.Parse(levelNode.SelectSingleNode("projSpeed")?.InnerText);
+                ProjRange = ProjSpeed * 2.0f;
             }
         }
     }

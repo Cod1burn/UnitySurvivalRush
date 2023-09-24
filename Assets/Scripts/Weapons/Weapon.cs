@@ -1,7 +1,9 @@
 using System;
 using Controllers;
 using Entities;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Weapons
 {
@@ -14,6 +16,8 @@ namespace Weapons
 
         public float AttackMultiplier;
         public float AttackInterval;
+
+        public float MinimumInterval;
 
         public int ProjNum;
         protected int ProjCount;
@@ -29,7 +33,20 @@ namespace Weapons
         public WeaponType Type;
 
         protected float Timer;
+
+        /// <summary>
+        /// The weapon description.
+        /// </summary>
+        public string Description { get; protected set; }
         
+        /// <summary>
+        /// The description of bonus after level up.
+        /// </summary>
+        public string Tooltip { get; protected set; }
+
+        public Image Icon { get; protected set; }
+        
+
         public Weapon(GameObject player, WeaponType type, GameObject projectile)
         {
             Projectile = projectile;
@@ -44,6 +61,7 @@ namespace Weapons
             Timer = 0.0f;
 
             ProjCount = 0;
+            
         }
 
         public virtual void Update()
