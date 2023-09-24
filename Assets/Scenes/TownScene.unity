@@ -547,12 +547,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2014905799}
-  m_Father: {fileID: 1837661473}
-  m_RootOrder: 4
+  m_Father: {fileID: 756662798}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -43.9, y: 27.3}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 12.5, y: -12.5}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &613634819
@@ -883,14 +883,15 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 613634818}
   m_Father: {fileID: 1283518643}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -330.1, y: -6.8329}
+  m_SizeDelta: {x: 100, y: 258.0659}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &865519519
 GameObject:
@@ -44379,7 +44380,6 @@ RectTransform:
   - {fileID: 1788953671}
   - {fileID: 1256853211}
   - {fileID: 140988957}
-  - {fileID: 613634818}
   m_Father: {fileID: 1283518643}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44403,7 +44403,6 @@ MonoBehaviour:
   mask: {fileID: 1256853213}
   levelText: {fileID: 140988959}
   expText: {fileID: 1675787654}
-  addWeaponButton: {fileID: 613634819}
 --- !u!1 &1945643531
 GameObject:
   m_ObjectHideFlags: 0
