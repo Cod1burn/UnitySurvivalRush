@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Entities
 {
@@ -26,7 +27,11 @@ namespace Entities
     
         [Header("Projectile Properties")]
         public bool piercing = false; 
-        public bool aoe = false;
+        public bool damageOverTime = false;
+        /// <summary>
+        /// If a projectile is not piercing, it will be destroyed after collide with first object.
+        /// If a projectile is damageOverTime, it will attack enemies by the time they stay in the collider.
+        /// </summary>
         private bool _isAttack;
 
         // Start is called before the first frame update
@@ -42,7 +47,7 @@ namespace Entities
         {
             if (_isAttack)
             {
-                if (aoe) _damageTimer = DamageInterval;
+                if (damageOverTime) _damageTimer = DamageInterval;
                 else if (!piercing)
                 {
                     Destroy(gameObject);
@@ -68,7 +73,7 @@ namespace Entities
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (aoe) return;
+            if (damageOverTime) return;
             if (!other.CompareTag("AliveEnemy")) return;
             EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
             if (enemy is not null)
@@ -81,7 +86,7 @@ namespace Entities
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            if (!aoe) return;
+            if (!damageOverTime) return;
             if (_damageTimer <= 0.0f)
             {
                 if (!other.CompareTag("AliveEnemy")) return;
