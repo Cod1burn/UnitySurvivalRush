@@ -34,6 +34,7 @@ namespace Weapons
 
         protected float Timer;
 
+        public string Name { get; protected set; }
         /// <summary>
         /// The weapon description.
         /// </summary>
@@ -44,7 +45,7 @@ namespace Weapons
         /// </summary>
         public string Tooltip { get; protected set; }
 
-        public Image Icon { get; protected set; }
+        public Sprite IconSprite { get; protected set; }
         
 
         public Weapon(GameObject player, WeaponType type, GameObject projectile)
@@ -72,7 +73,7 @@ namespace Weapons
 
         public virtual void Attack()
         {
-            if (ProjCount < ProjNum) Timer = 0.15f * AttackInterval;
+            if (ProjCount < ProjNum) Timer = MinimumInterval;
             else
             {
                 ProjCount = 0;

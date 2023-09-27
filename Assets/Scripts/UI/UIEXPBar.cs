@@ -17,6 +17,9 @@ public class UIEXPBar : MonoBehaviour, IPointerEnterHandler ,IPointerExitHandler
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI expText;
 
+
+    [NonSerialized] public int SkillPoint;
+
     private float _maxExp;
     private float _exp;
     
@@ -36,6 +39,7 @@ public class UIEXPBar : MonoBehaviour, IPointerEnterHandler ,IPointerExitHandler
         _maxExp = 100.0f;
         _target = 0.0f;
         _current = 0.0f;
+        SkillPoint = 1;
     }
 
     void Awake()
@@ -57,6 +61,7 @@ public class UIEXPBar : MonoBehaviour, IPointerEnterHandler ,IPointerExitHandler
             {
                 _current -= 1.0f;
                 _currentLevel += 1;
+                SkillPoint += 1;
             }
             levelText.text = _currentLevel.ToString();
             if (_currentLevel >= 10) levelText.fontSize = 45;

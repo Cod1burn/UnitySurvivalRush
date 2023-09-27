@@ -3,6 +3,7 @@ using Controllers;
 using Entities;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Weapons
 {
@@ -11,9 +12,11 @@ namespace Weapons
 
         public MagicWand(GameObject player) : base(player, WeaponType.MagicWand, Resources.Load("Projectile/BlueOrb") as GameObject)
         {
+            Name = "Magic Wand";
             Description = "Shoot magic orbs in your facing direction.";
+            IconSprite = Resources.Load<Sprite>("Icons/Weapons/magicwand");
             
-
+            MaxLevel = 8;
             GetLevelBonus();
         }
 
@@ -38,12 +41,12 @@ namespace Weapons
 
         public override void GetLevelBonus()
         {
-            TextAsset xmlData = Resources.Load<TextAsset>("Data/Weapons/MagicWand");
+            TextAsset xmlData = Resources.Load<TextAsset>("Data/Weapons/magicwand");
 
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(xmlData.text);
 
-            XmlNode levelNode = xmlDoc.SelectSingleNode($"weapon/level[@number='{Level}']");
+            XmlNode levelNode = xmlDoc.SelectSingleNode($"weapon/level[@lvl='{Level}']");
 
             if (levelNode != null)
             {
@@ -54,6 +57,10 @@ namespace Weapons
                 ProjNum = int.Parse(levelNode.SelectSingleNode("projNum")?.InnerText);
                 ProjSpeed = float.Parse(levelNode.SelectSingleNode("projSpeed")?.InnerText);
                 ProjRange = ProjSpeed * 2.0f;
+            }
+            else
+            {
+                Debug.Log("Failed to load weapon: magicwand");
             }
         }
     }

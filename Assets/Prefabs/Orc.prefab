@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5285541830382255133}
   - component: {fileID: 3702979103595676665}
   - component: {fileID: 2838897056947758818}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Orc
   m_TagString: AliveEnemy
   m_Icon: {fileID: 0}
@@ -169,4 +169,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  target: {fileID: 0}
+  IsMelee: 0

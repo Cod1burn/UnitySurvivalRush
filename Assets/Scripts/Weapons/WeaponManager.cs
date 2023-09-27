@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 using Weapons;
 
@@ -28,20 +29,24 @@ public class WeaponManager : MonoBehaviour
         {
             if (weapon.Type == type) return;
         }
-        
+
+        Weapon weapon_;
         switch (type)
         {
             case WeaponType.MagicWand:
-                _weapons.Add(new MagicWand(gameObject));
+                weapon_ = new MagicWand(gameObject);
                 break;
             
             case WeaponType.FireWand:
-                _weapons.Add(new FireWand(gameObject));
+                weapon_ = new FireWand(gameObject);
                 break;
             
-            default: 
+            default:
+                weapon_ = new MagicWand(gameObject);
                 break;
         }
+        _weapons.Add(weapon_);
+        UIWeaponsFrame.Instance.AddNewWeapon(weapon_);
     }
 
     public void LevelUpWeapon(WeaponType type)

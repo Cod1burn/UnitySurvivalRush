@@ -4,6 +4,7 @@ using Entities;
 using ObjectManager;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Weapons
 {
@@ -14,12 +15,18 @@ namespace Weapons
         private float _damageInterval;
         public FireWand(GameObject player) : base(player, WeaponType.FireWand, Resources.Load("Projectile/FireSet") as GameObject)
         {
+            Name = "Fire Wand";
+            Description = "Summon Fire at enemies' position.";
+            IconSprite = Resources.Load<Sprite>("Icons/Weapons/firewand");
+            MaxLevel = 6;
             _damageInterval = 0.25f;
             AttackInterval = 5.0f;
             MinimumInterval = 0.1f * AttackInterval;
             ProjSpeed = 0.0f;
             _maxRange = 10.0f;
             _manager = EnemyManager.Instance;
+            
+            GetLevelBonus();
         }
 
         public override void Attack()
@@ -48,12 +55,12 @@ namespace Weapons
         
         public override void GetLevelBonus()
         {
-            TextAsset xmlData = Resources.Load<TextAsset>("Data/Weapons/MagicWand");
+            TextAsset xmlData = Resources.Load<TextAsset>("Data/Weapons/firewand");
 
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(xmlData.text);
 
-            XmlNode levelNode = xmlDoc.SelectSingleNode($"weapon/level[@number='{Level}']");
+            XmlNode levelNode = xmlDoc.SelectSingleNode($"weapon/level[@lvl='{Level}']");
 
             if (levelNode != null)
             {
