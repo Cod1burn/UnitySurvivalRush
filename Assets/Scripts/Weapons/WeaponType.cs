@@ -3,6 +3,7 @@ namespace Weapons
     public enum WeaponType
     {
         MagicWand,
-        FireWand
+        FireWand,
+        Lightning
     }
 }

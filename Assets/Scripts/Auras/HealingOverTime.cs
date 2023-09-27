@@ -29,5 +29,10 @@ namespace Auras
             }
             base.FixedUpdate();
         }
+
+        public override Aura Copy()
+        {
+            return new HealingOverTime(Name, Duration, Values[0]);
+        }
     }
 }

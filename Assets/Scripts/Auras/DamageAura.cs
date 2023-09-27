@@ -19,5 +19,10 @@ namespace Auras
             Owner.AttackMultiplier -= Values[0];
             base.OnAuraEnd();
         }
+
+        public override Aura Copy()
+        {
+            return new DamageAura(Name, Duration, Values[0]);
+        }
     }
 }

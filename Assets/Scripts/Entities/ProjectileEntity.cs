@@ -1,4 +1,5 @@
 using System;
+using Auras;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -34,12 +35,15 @@ namespace Entities
         /// </summary>
         private bool _isAttack;
 
+        [NonSerialized] public Aura AuraOnHit;
+
         // Start is called before the first frame update
         void Awake()
         {
             _lifeTimer = 0.0f;
             _damageTimer = 0.0f;
             _isAttack = false;
+            AuraOnHit = null;
         }
 
         // Update is called once per frame
@@ -102,6 +106,7 @@ namespace Entities
         void Hit(BaseEntity entity)
         {
             entity.TakeDamage(Attack);
+            if (AuraOnHit != null) AuraOnHit.Copy().ApplyTo(entity);
             _isAttack = true;
         }
     

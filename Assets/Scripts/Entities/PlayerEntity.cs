@@ -5,7 +5,7 @@ namespace Entities
 {
     public class PlayerEntity: BaseEntity
     {
-        private PlayerController _controller;
+        public PlayerController Controller { get; private set; }
 
         public float MoveSpeed
         {
@@ -53,7 +53,7 @@ namespace Entities
             UpdateExpBar();
             UpdateHealthBar();
 
-            _controller = controller;
+            Controller = controller;
 
         }
 
@@ -66,14 +66,14 @@ namespace Entities
         public override void Heal(float value)
         {
             Health = Mathf.Clamp(Health + value, Health, MaxHealth);
-            _controller.FloatingText($"{value:F1}", Color.green);
+            Controller.FloatingText($"{value:F1}", Color.green);
             UpdateHealthBar();
         }
 
         public override void TakeDamage(float value)
         {
             value *= DefAmp;
-            _controller.FloatingText($"{value:F1}", Color.red);
+            Controller.FloatingText($"{value:F1}", Color.red);
             Health = Mathf.Clamp(Health - value, 0.0f, Health);
             UpdateHealthBar();
         }

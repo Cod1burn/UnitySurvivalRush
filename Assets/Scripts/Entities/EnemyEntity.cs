@@ -14,7 +14,7 @@ namespace Entities
         [XmlElement("speed")]
         public float MoveSpeed
         {
-            get { return BaseMoveSpeed * MoveSpeedMultiplier; }
+            get { return MoveSpeedMultiplier >= 0.0f ? BaseMoveSpeed * MoveSpeedMultiplier : 0.0f; }
             set { BaseMoveSpeed = value; }
         }
         
@@ -41,12 +41,12 @@ namespace Entities
         [XmlElement("isMelee")]
         public bool IsMelee;
 
-        private EnemyController _controller;
+        public EnemyController Controller { get; private set; }
     
         // For enemy objects.
         public EnemyEntity(EnemyEntity template, EnemyController controller): base()
         {
-            _controller = controller;
+            Controller = controller;
 
             Name = template.Name;
             Difficulty = template.Difficulty;
@@ -71,13 +71,13 @@ namespace Entities
         public override void Heal(float value)
         {
             Health = Mathf.Clamp(Health + value, Health, MaxHealth);
-            _controller.FloatingText($"{value:F1}", Color.green);
+            Controller.FloatingText($"{value:F1}", Color.green);
         }
 
         public override void TakeDamage(float value)
         {
             Health = Mathf.Clamp(Health - value, 0.0f, Health);
-            _controller.FloatingText($"{value:F1}", Color.red);
+            Controller.FloatingText($"{value:F1}", Color.red);
         }
 
         public static EnemyEntity ImportFromXML(string path)

@@ -25,7 +25,7 @@ namespace Auras
             this.Values = values;
         }
 
-        public void ApplyTo(BaseEntity entity)
+        public virtual void ApplyTo(BaseEntity entity)
         {
             Owner = entity;
             Timer = 0.0f;
@@ -56,6 +56,11 @@ namespace Auras
         public virtual void OnAuraEnd()
         {
             Owner = null;
+        }
+
+        public virtual Aura Copy()
+        {
+            return null;
         }
     
     }

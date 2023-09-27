@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<weapon name="Lightning" icon="lightning">
+    <level lvl="1">
+        <description>Damage increased by 25%.</description>
+        <attack>0.75</attack>
+        <direction>1</direction>
+        <projSpeed>2.0</projSpeed>
+        <interval>4.0</interval>
+        <slow>0.0</slow>
+    </level>
+    <level lvl="2">
+        <description>Lightning Speed and range increased by 50%.</description>
+        <attack>1.0</attack>
+        <projNum>1</projNum>
+        <projSpeed>2.0</projSpeed>
+        <interval>4.0</interval>
+        <slow>0.0</slow>
+    </level>
+    <level lvl="3">
+        <description>Lightning interval decreased 1 second.</description>
+        <attack>1.0</attack>
+        <direction>1</direction>
+        <projSpeed>3.0</projSpeed>
+        <interval>4.0</interval>
+        <slow>0.0</slow>
+    </level>
+    <level lvl="4">
+        <description>Damage increased by 25%.</description>
+        <attack>1.0</attack>
+        <direction>1</direction>
+        <projSpeed>3.0</projSpeed>
+        <interval>3.0</interval>
+        <slow>0.0</slow>
+    </level>
+    <level lvl="5">
+        <description>Slow enemies by 50% for 2 seconds.</description>
+        <attack>1.25</attack>
+        <direction>1</direction>
+        <projSpeed>3.0</projSpeed>
+        <interval>3.0</interval>
+        <slow>0.0</slow>
+    </level>
+    <level lvl="6">
+        <description>Damage increased by 25%.</description>
+        <attack>1.25</attack>
+        <direction>1</direction>
+        <projSpeed>3.0</projSpeed>
+        <interval>3.0</interval>
+        <slow>0.5</slow>
+    </level>
+    <level lvl="7">
+        <description>Summon lightnings in four directions.</description>
+        <attack>1.5</attack>
+        <direction>1</direction>
+        <projSpeed>3.0</projSpeed>
+        <interval>3.0</interval>
+        <slow>0.5</slow>
+    </level>
+    <level lvl="8">
+        <description>Max Level</description>
+        <attack>1.5</attack>
+        <direction>4</direction>
+        <projSpeed>3.0</projSpeed>
+        <interval>3.0</interval>
+        <slow>0.5</slow>
+    </level>
+</weapon>

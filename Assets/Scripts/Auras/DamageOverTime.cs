@@ -27,5 +27,10 @@ namespace Auras
             }
             base.FixedUpdate();
         }
+        
+        public override Aura Copy()
+        {
+            return new DamageOverTime(Name, Duration, Values[0]);
+        }
     }
 }

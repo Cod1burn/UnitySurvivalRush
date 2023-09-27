@@ -19,5 +19,10 @@ namespace Auras
             Owner.MoveSpeedMultiplier -= Values[0];
             base.OnAuraEnd();
         }
+
+        public override Aura Copy()
+        {
+            return new SpeedAura(Name, Duration, Values[0]);
+        }
     }
 }
