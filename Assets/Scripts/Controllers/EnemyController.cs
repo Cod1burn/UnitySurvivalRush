@@ -56,6 +56,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     protected void FixedUpdate()
     {
+        Entity.FixedUpdate();
         if (Entity.Health <= 0.0f)
         {
             _animator.SetBool("Dead", true);

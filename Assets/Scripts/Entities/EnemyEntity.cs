@@ -8,13 +8,14 @@ namespace Entities
     [XmlRoot(ElementName = "enemy")]
     public class EnemyEntity: BaseEntity
     {
+        
         [XmlElement("name")]
         public string Name;
         
         [XmlElement("speed")]
         public float MoveSpeed
         {
-            get { return MoveSpeedMultiplier >= 0.0f ? BaseMoveSpeed * MoveSpeedMultiplier : 0.0f; }
+            get { return MoveSpeedMultiplier > 0 ? BaseMoveSpeed * MoveSpeedMultiplier : 0.0f; }
             set { BaseMoveSpeed = value; }
         }
         
@@ -40,9 +41,11 @@ namespace Entities
 
         [XmlElement("isMelee")]
         public bool IsMelee;
-
+        
+        [XmlIgnore]
         public EnemyController Controller { get; private set; }
-    
+
+
         // For enemy objects.
         public EnemyEntity(EnemyEntity template, EnemyController controller): base()
         {
@@ -59,7 +62,7 @@ namespace Entities
         }
     
         // For creating templates
-        public EnemyEntity()
+        public EnemyEntity() : base()
         { }
 
         // Update is called once per frame

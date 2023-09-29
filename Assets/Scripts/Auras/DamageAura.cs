@@ -17,7 +17,6 @@ namespace Auras
         public override void OnAuraEnd()
         {
             Owner.AttackMultiplier -= Values[0];
-            base.OnAuraEnd();
         }
 
         public override Aura Copy()

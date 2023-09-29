@@ -21,21 +21,27 @@ public class Cheater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            _weaponManager.AddWeapon(WeaponType.MagicWand);
+            _weaponManager.AddWeapon(_weaponManager.GetWeapon(WeaponType.MagicWand));
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            _weaponManager.AddWeapon(WeaponType.FireWand);
+            _weaponManager.AddWeapon(_weaponManager.GetWeapon(WeaponType.Lightning));
         }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            _weaponManager.AddWeapon(_weaponManager.GetWeapon(WeaponType.Lightning));
+        }
+
 
         if (Input.GetKeyDown(KeyCode.L))
         {
             foreach (WeaponType type in Enum.GetValues(typeof(WeaponType)))
             {
-                _weaponManager.LevelUpWeapon(type);
+                _weaponManager.LevelUpAllWeapon(type);
             }
         }
 

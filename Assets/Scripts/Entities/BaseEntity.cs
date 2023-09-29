@@ -29,6 +29,7 @@ namespace Entities
         public virtual void FixedUpdate()
         {
             Auras.ForEach(aura => aura.FixedUpdate());
+            Auras.RemoveAll(aura => aura.Expired);
         }
 
         public virtual void Heal(float value) {}

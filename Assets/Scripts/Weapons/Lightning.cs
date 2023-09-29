@@ -18,9 +18,11 @@ namespace Weapons
             Name = "Lightning";
             Description = "Summon flying lightnings to attack enemies in front of you.";
             IconSprite = Resources.Load<Sprite>("Icons/Weapons/lightning");
-            ProjDuration = 1.5f;
+            ProjDuration = 2.0f;
             ProjNum = 1;
-            MaxLevel = 6;
+            MaxLevel = 8;
+            
+            GetLevelBonus();
         }
 
         public override void Attack()
@@ -41,7 +43,7 @@ namespace Weapons
 
         void SummonLightning(Vector2 direction)
         {
-            GameObject p = Controller.ShootProjectile(Projectile, Player.transform.position);
+            GameObject p = Controller.ShootProjectile(Projectile, Player.transform.position + (Vector3)direction * 0.8f);
             p.SetActive(true);
             ProjectileEntity projEntity = p.GetComponent<ProjectileEntity>();
             projEntity.Attack = Entity.Attack * AttackMultiplier;

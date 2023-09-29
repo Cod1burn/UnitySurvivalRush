@@ -74,13 +74,11 @@ namespace UI
         {
             UITooltip.Instance.SetText(Weapon_.Name, $"{Weapon_.Description} \nNext Level: {Weapon_.Tooltip}");
             UITooltip.Instance.ShowTooltip(transform.position + new Vector3(60.0f, 0.0f, 0.0f));
-            Debug.Log($"Enter: {Weapon_.Name}");
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             UITooltip.Instance.HideTooltip();
-            Debug.Log($"Exit: {Weapon_.Name}");
         }
     }
 }

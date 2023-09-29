@@ -21,12 +21,13 @@ public class UIHealthBar : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private void Awake()
     {
         Instance = this;
+        _width = mask.rectTransform.rect.width;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        _width = mask.rectTransform.rect.width;
+     
     }
 
     // Update is called once per frame

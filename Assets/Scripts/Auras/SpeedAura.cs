@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Auras
 {
     public class SpeedAura : Aura

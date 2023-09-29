@@ -18,6 +18,8 @@ namespace Auras
 
         public float[] Values { get; private set; }
         // Start is called before the first frame update
+
+        public bool Expired;
         public Aura(string name, float duration, params float[] values)
         {
             this.Name = name;
@@ -31,6 +33,7 @@ namespace Auras
             Timer = 0.0f;
             Owner.ApplyAura(this);
             OnAuraApply();
+            Expired = false;
         }
 
         public void Extend(float time)
@@ -46,16 +49,12 @@ namespace Auras
         public virtual void FixedUpdate()
         {
             Timer += Time.deltaTime;
-            if (Timer >= Duration)
-            {
-                OnAuraEnd();
-                Owner.RemoveAura(this);
-            }
+            if (Timer >= Duration) OnAuraEnd();
         }
 
         public virtual void OnAuraEnd()
         {
-            Owner = null;
+            Expired = true;
         }
 
         public virtual Aura Copy()

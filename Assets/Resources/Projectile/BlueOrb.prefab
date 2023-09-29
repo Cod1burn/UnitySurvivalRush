@@ -4940,6 +4940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  directional: 1
 --- !u!114 &8339413043568857240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4952,14 +4953,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a838734fb4e645c0ab96d884c915e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 3
-  speed: 10
-  duration: -1
-  scale: 1
-  damageInterval: 0
-  range: -1
   piercing: 0
-  aoe: 0
+  damageOverTime: 0
 --- !u!50 &-4730172673134498277
 Rigidbody2D:
   serializedVersion: 4

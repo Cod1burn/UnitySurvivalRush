@@ -9,6 +9,8 @@ namespace Controllers
     
         private Vector2 _direction;
         private ProjectileEntity _pe;
+
+        public bool directional;
     
         // Start is called before the first frame update
         void Awake()
@@ -34,7 +36,7 @@ namespace Controllers
 
         public void ChangeDirection(Vector2 direction)
         {
-            transform.Rotate(0, 0, Vector2.Angle(direction, _direction));
+            if(directional) transform.Rotate(0, 0, Vector2.Angle(direction, _direction));
             _direction = direction;
         }
     
