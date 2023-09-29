@@ -1,12 +1,14 @@
+using System;
 using Entities;
 using TMPro;
 using UnityEngine;
+using Weapons;
 
 namespace Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        
+        public static PlayerController Instance { get; private set; }
         public GameObject numberTemplate;
         
         private float _horizontal;
@@ -27,6 +29,12 @@ namespace Controllers
         private Color _spriteColor;
         private float _hurtAnimTimer;
         private const float HurtAnimTime = 0.3f;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         // Start is called before the first frame update
         void Start()
         {
