@@ -18,7 +18,7 @@ namespace Weapons
             Name = "Lightning";
             Description = "Summon flying lightnings to attack enemies in front of you.";
             IconSprite = Resources.Load<Sprite>("Icons/Weapons/lightning");
-            ProjDuration = 2.0f;
+            ProjDuration = 1.3f;
             ProjNum = 1;
             MaxLevel = 8;
             

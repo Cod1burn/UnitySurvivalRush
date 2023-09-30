@@ -72,7 +72,10 @@ namespace UI
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            UITooltip.Instance.SetText(Weapon_.Name, $"{Weapon_.Description} \nNext Level: {Weapon_.Tooltip}");
+            if (Weapon_.Level == Weapon_.MaxLevel)
+                UITooltip.Instance.SetText(Weapon_.Name, $"{Weapon_.Description} \nMax Level");
+            else
+                UITooltip.Instance.SetText(Weapon_.Name, $"{Weapon_.Description} \nNext Level: {Weapon_.Tooltip}");
             UITooltip.Instance.ShowTooltip(transform.position + new Vector3(60.0f, 0.0f, 0.0f));
         }
 

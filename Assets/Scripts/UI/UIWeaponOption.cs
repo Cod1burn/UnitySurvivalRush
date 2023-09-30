@@ -12,7 +12,7 @@ namespace UI
 
         private void Awake()
         {
-            
+            GetComponent<Button>().onClick.AddListener(AddWeaponToPlayer);
         }
 
         /// <summary>
@@ -29,7 +29,8 @@ namespace UI
             }
             Weapon = w;
             GetComponent<Image>().sprite = Weapon.IconSprite;
-            GetComponent<Button>().onClick.AddListener(AddWeaponToPlayer);
+            // GetComponent<Button>().onClick.RemoveAllListeners();
+            // GetComponent<Button>().onClick.AddListener(AddWeaponToPlayer);
         }
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace UI
             UIEXPBar.Instance.SkillPoint--;
             UITooltip.Instance.HideTooltip();
             UISelectNewWeapon.Instance.HideMenu();
+            UISelectNewWeapon.Instance.OptionsAssigned = false;
         }
 
         /// <summary>

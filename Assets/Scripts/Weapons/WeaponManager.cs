@@ -40,8 +40,8 @@ namespace Weapons
             {
                 foreach (var w in _weapons)
                     if (w.Type == t)
-                        return true;
-                return false;
+                        return false;
+                return true;
             }).ToList();
             for (int i = 0; i < num; i++)
             {
@@ -92,7 +92,7 @@ namespace Weapons
                 if (w.Type == weapon.Type) return;
             }
             _weapons.Add(weapon);
-            UIWeaponsFrame.Instance.AddNewWeapon(weapon);
+            UIWeaponsFrame.Instance.AddNewWeaponComponent(weapon);
         }
     
 
