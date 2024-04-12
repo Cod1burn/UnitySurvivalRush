@@ -2,7 +2,8 @@ namespace DefaultNamespace
 {
     public enum EnemyType
     {
-        Orc
+        Orc,
+        Berserker
     }
 
 }

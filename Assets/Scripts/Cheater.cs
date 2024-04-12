@@ -63,5 +63,14 @@ public class Cheater : MonoBehaviour
             Vector2 position = (Vector2)transform.position + deltaPosition;
             EnemyManager.Instance.GenerateEnemy(0, position);
         }
+        
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            float angle = Random.value * Mathf.PI;
+            float distance = Random.Range(2.0f, 5.0f);
+            Vector2 deltaPosition = new Vector2(Mathf.Cos(angle) * distance, Mathf.Sin(angle) * distance);
+            Vector2 position = (Vector2)transform.position + deltaPosition;
+            EnemyManager.Instance.GenerateEnemy(1, position);
+        }
     }
 }
