@@ -34,7 +34,7 @@ namespace Weapons
             projEntity.Range = ProjRange;
             
             ProjectileController projController = p.GetComponent<ProjectileController>();
-            projController.Shoot(Player, Controller.Direction);
+            projController.Shoot(Player, Controller.AimDirection);
             ProjCount++;
             base.Attack();
         }

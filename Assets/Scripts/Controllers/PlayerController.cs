@@ -10,6 +10,7 @@ namespace Controllers
     {
         public static PlayerController Instance { get; private set; }
         public GameObject numberTemplate;
+        public GameObject aimArrow;
         
         private float _horizontal;
         private float _vertical;
@@ -21,7 +22,13 @@ namespace Controllers
             get { return _direction; }
         }
         private Vector2 _direction;
-    
+
+        public Vector2 AimDirection
+        {
+            get { return _aimDirection; }
+        }
+        private Vector2 _aimDirection;
+
         private Rigidbody2D _rigidbody;
         public PlayerEntity Entity;
 
@@ -68,6 +75,10 @@ namespace Controllers
                     }
                 }
             }
+            // Get the transform position of mouse
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            _aimDirection = (mousePos - transform.position).normalized;
+
         }
 
         private void FixedUpdate()
@@ -86,7 +97,11 @@ namespace Controllers
 
             Vector2 direction = new Vector2(_horizontal, _vertical);
             MoveFor(Time.deltaTime * Entity.MoveSpeed * direction);
-
+            
+            // Rotate the aimarrow based on aim direction
+            float angle = Mathf.Atan2(_aimDirection.y, _aimDirection.x) * Mathf.Rad2Deg;
+            aimArrow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            
             Entity.FixedUpdate();
         }
         
