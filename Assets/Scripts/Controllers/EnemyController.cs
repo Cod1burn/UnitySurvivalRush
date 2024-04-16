@@ -25,13 +25,15 @@ public class EnemyController : MonoBehaviour
     public Dictionary<ItemType, (float, float[])> LootTable;
 
     public bool IsMelee;
-    private GameObject _atkTarget;
+    protected GameObject AtkTarget;
     
-    private Animator _animator;
+    protected Animator Animator;
+    
     private Rigidbody2D _rigidbody;
     private Vector2 _direction;
+    private Vector2 _aimDirection;
 
-    private float _attackTimer;
+    protected float AttackTimer;
     
     private SpriteRenderer _sr;
     private Color _spriteColor;
@@ -40,13 +42,13 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     protected void Awake()
     {
-        _animator = GetComponent<Animator>();
+        Animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _sr = GetComponent<SpriteRenderer>();
         _direction = new Vector2(0.0f, 0.0f);
 
         _hurtAnimTimer = 0.0f;
-        _attackTimer = 0.0f;
+        AttackTimer = 0.0f;
 
         LootTable = new Dictionary<ItemType, (float, float[])>();
         
@@ -59,7 +61,7 @@ public class EnemyController : MonoBehaviour
         Entity.FixedUpdate();
         if (Entity.Health <= 0.0f)
         {
-            _animator.SetBool("Dead", true);
+            Animator.SetBool("Dead", true);
             gameObject.tag = "DeadEnemy";
             gameObject.layer = 12; // Layer 12: Dead
             return;
@@ -72,35 +74,19 @@ public class EnemyController : MonoBehaviour
             _spriteColor = new Color(0.7f, 0.7f, 0.7f, 1.0f);
         }
         _sr.color = _spriteColor;
+    }
 
+    public void ChasePlayer()
+    {
         MoveDirection();
         if (_direction.x != 0.0f)
         {
             float horizontal = _direction.x > 0.0f ? 1 : -1;
-            _animator.SetFloat("Horizontal", horizontal);
+            Animator.SetFloat("Horizontal", horizontal);
         }
 
         MoveFor(Time.deltaTime * Entity.MoveSpeed * _direction);
-
-        if (_attackTimer > 0.0f) _attackTimer -= Time.deltaTime;
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (!CompareTag("AliveEnemy")) return;
-        if (other.gameObject.GetComponent<PlayerController>() != null)
-        {
-            if (_attackTimer <= 0.0f) AttackAnimation(other.gameObject);
-        }
-    }
-
-    private void OnCollisionStay2D(Collision2D other)
-    {
-        if (!CompareTag("AliveEnemy")) return;
-        if (other.gameObject.GetComponent<PlayerController>() != null)
-        {
-            if (_attackTimer <= 0.0f) AttackAnimation(other.gameObject);
-        }
+        if (AttackTimer > 0.0f) AttackTimer -= Time.deltaTime;
     }
 
     /// <summary>
@@ -129,22 +115,22 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void AttackAnimation(GameObject gameObject)
+    public void AttackAnimation(GameObject gameObject, String animationName)
     {
-        _animator.SetTrigger("Attack");
-        _attackTimer = Entity.AtttackInterval;
-        _atkTarget = gameObject;
+        Animator.SetTrigger(animationName);
+        AttackTimer = Entity.AtttackInterval;
+        AtkTarget = gameObject;
     }
 
     public void AttackTarget()
     {
-        PlayerController player = _atkTarget.GetComponent<PlayerController>();
+        PlayerController player = AtkTarget.GetComponent<PlayerController>();
         if (player != null)
         {
             player.GetHurt();
             player.Entity.TakeDamage(Entity.Attack);
         }
-        _atkTarget = null;
+        AtkTarget = null;
     }
 
     public void GetHurt()

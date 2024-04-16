@@ -926,7 +926,7 @@ GameObject:
   - component: {fileID: 691267982}
   m_Layer: 0
   m_Name: Shaman
-  m_TagString: Untagged
+  m_TagString: AliveEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56956,6 +56956,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hero
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115231424244933654, guid: 69eafec80945a4e459f48d13d6976414,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6115231424244933739, guid: 69eafec80945a4e459f48d13d6976414,
         type: 3}
