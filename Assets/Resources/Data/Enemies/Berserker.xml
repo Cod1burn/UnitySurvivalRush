@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<enemy code = 'orc'>
-    <name>Orc</name>
+<enemy code = 'berserker'>
+    <name>Berserker</name>
     <speed>1.5</speed>
     <maxHealth>30.0</maxHealth>
     <attack>1.5</attack>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<enemy code = 'shaman'>
+    <name>Shaman</name>
+    <speed>1.5</speed>
+    <maxHealth>150.0</maxHealth>
+    <attack>3.0</attack>
+    <difficulty>10</difficulty>
+    <atkItv>1.0</atkItv>
+    <isMelee>false</isMelee>
+</enemy>
