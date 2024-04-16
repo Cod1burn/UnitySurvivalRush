@@ -1,5 +1,6 @@
 using System;
 using Auras;
+using Controllers;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -74,40 +75,14 @@ namespace Entities
                 return;
             }
         }
-
-        private void OnTriggerEnter2D(Collider2D other)
+        
+        public Boolean Hit(BaseEntity entity)
         {
-            if (damageOverTime) return;
-            if (!other.CompareTag("AliveEnemy")) return;
-            EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
-            if (enemy is not null)
-            {
-                Hit(enemy.Entity);
-                enemy.GetHurt();
-            }
-            if (!piercing) Destroy(gameObject);
-        }
-
-        private void OnTriggerStay2D(Collider2D other)
-        {
-            if (!damageOverTime) return;
-            if (_damageTimer <= 0.0f)
-            {
-                if (!other.CompareTag("AliveEnemy")) return;
-                EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
-                if (enemy is not null)
-                {
-                    Hit(enemy.Entity);
-                    enemy.GetHurt();
-                }
-            }
-        }
-
-        void Hit(BaseEntity entity)
-        {
+            if (_damageTimer <= 0.0f) return false;
             entity.TakeDamage(Attack);
             if (AuraOnHit != null) AuraOnHit.Copy().ApplyTo(entity);
             _isAttack = true;
+            return true;
         }
     
     }
