@@ -76,7 +76,7 @@ public class EnemyController : MonoBehaviour
         _sr.color = _spriteColor;
     }
 
-    public void ChasePlayer()
+    public void ChaseTarget()
     {
         MoveDirection();
         if (_direction.x != 0.0f)

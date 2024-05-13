@@ -15,7 +15,7 @@ namespace Controllers
         void FixedUpdate()
         {
             base.FixedUpdate();
-            ChasePlayer();
+            ChaseTarget();
         }
         
         private void OnCollisionEnter2D(Collision2D other)

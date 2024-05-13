@@ -7,4 +7,5 @@
     <difficulty>10</difficulty>
     <atkItv>1.0</atkItv>
     <isMelee>false</isMelee>
+    <range>5.0</range>
 </enemy>

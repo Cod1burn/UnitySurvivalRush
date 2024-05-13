@@ -41,6 +41,10 @@ namespace Entities
 
         [XmlElement("isMelee")]
         public bool IsMelee;
+
+        // For range enemies
+        [XmlElement("range")]
+        public float AttackRange;
         
         [XmlIgnore]
         public EnemyController Controller { get; private set; }
